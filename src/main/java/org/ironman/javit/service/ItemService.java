@@ -5,7 +5,7 @@ import java.util.Date;
 import org.ironman.javit.entity.Item;
 import org.ironman.javit.model.ItemRequest;
 import org.ironman.javit.model.ItemResponse;
-import org.ironman.repository.ItemRepository;
+import org.ironman.javit.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

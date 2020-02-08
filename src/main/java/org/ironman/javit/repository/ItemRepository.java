@@ -1,4 +1,4 @@
-package org.ironman.repository;
+package org.ironman.javit.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
