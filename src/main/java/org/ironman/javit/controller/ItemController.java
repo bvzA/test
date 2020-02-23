@@ -10,9 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -27,8 +29,6 @@ public class ItemController {
     @Autowired
     private ItemService itemService ;
     
-    
-
     @PostMapping("")
     public ItemResponse addItem (@Valid @RequestBody ItemRequest body) {
         logger.info("addItem");
@@ -41,6 +41,24 @@ public class ItemController {
         logger.info("listItem");
         return itemService.listAll();
 
+    }
+
+    @GetMapping("/{id}")
+    public ItemResponse getItem (@PathVariable("id") Integer id){
+        logger.info("GetItem");
+        return itemService.getItem(id);
+    }
+
+    @PostMapping("/{id}")
+    public ItemResponse editItem (@PathVariable("id") Integer id, @RequestBody ItemRequest body){
+        logger.info("EditItem");
+        return itemService.editItem(id, body);
+    }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public ItemResponse removeItem (@PathVariable("id") Integer id){
+        logger.info("RemoveItem");
+        return itemService.removeItem(id);
     }
 
 }

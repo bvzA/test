@@ -3,7 +3,6 @@ package org.ironman.javit.repository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import org.ironman.javit.entity.Item;
@@ -42,9 +41,25 @@ public class ItemRepository {
         {
             throw new IllegalArgumentException("not found");
         }
-
         BeanUtils.copyProperties(t,h);
-        return h;
+
+        return t;
+    }
+
+    public Item deleteItem(Integer t){
+        if(t == null)
+        {
+            throw new IllegalArgumentException("Id must be not null");
+        }
+
+        Item h = items.get(t);
+        if(h.getId() == null)
+        {
+            throw new IllegalArgumentException("not found");
+        }
+
+        return items.remove(h.getId());
+
     }
 
     public List<Item> selectAll(){

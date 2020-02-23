@@ -31,7 +31,7 @@ public class ItemService {
         item.setCreateDate(new Date());
         item.setBuyDate(null);
 
-        repository.insertItem(item);
+        item = repository.insertItem(item);
         ItemResponse itemRes = new ItemResponse();
         itemRes.setTitle(item.getTitle());
         itemRes.setQty(item.getQty());
@@ -78,6 +78,54 @@ public class ItemService {
         liseres.setTotalShopping(countShopping);
         
         return liseres;
+        
+    }
+
+    public ItemResponse getItem(Integer id) {
+        Item item = repository.selectById(id);
+        ItemResponse itemRes = new ItemResponse();
+        itemRes.setTitle(item.getTitle());
+        itemRes.setQty(item.getQty());
+        itemRes.setId(item.getId());
+        itemRes.setChecked(item.getChecked());
+        itemRes.setBuyDate(item.getBuyDate());
+        itemRes.setArchived(item.getArchived());
+        itemRes.setAddedDate(item.getCreateDate());
+        return itemRes;
+    }
+
+    public ItemResponse editItem(Integer id, ItemRequest request) {
+        Item item = repository.selectById(id);
+
+        //ItemResponse itemRes = new ItemResponse();
+        item.setTitle(request.getTitle());
+        item.setQty(request.getQty());
+        item.setBuyDate(new Date());
+        item = repository.updateItem(item);
+        ItemResponse itemRes = new ItemResponse();
+        itemRes.setTitle(item.getTitle());
+        itemRes.setQty(item.getQty());
+        itemRes.setId(item.getId());
+        itemRes.setChecked(item.getChecked());
+        itemRes.setBuyDate(item.getBuyDate());
+        itemRes.setArchived(item.getArchived());
+        itemRes.setAddedDate(item.getCreateDate());
+        return itemRes;
+        
+    }
+
+    public ItemResponse removeItem(Integer id) {
+        Item item = repository.deleteItem(id);
+        ItemResponse itemRes = new ItemResponse();
+        itemRes.setTitle(item.getTitle());
+        itemRes.setQty(item.getQty());
+        itemRes.setId(item.getId());
+        itemRes.setChecked(item.getChecked());
+        itemRes.setBuyDate(item.getBuyDate());
+        itemRes.setArchived(item.getArchived());
+        itemRes.setAddedDate(item.getCreateDate());
+        return itemRes;
+
         
     }
 }
