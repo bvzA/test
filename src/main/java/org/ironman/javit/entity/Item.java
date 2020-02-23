@@ -2,19 +2,36 @@ package org.ironman.javit.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
 /**
  * Item
  */
+@Entity
 public class Item {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
+
+    @NotNull
     private String title;
+    @NotNull
     private Integer qty;
+    @NotNull
     private Date createDate;
     private Date buyDate;
+
+    @NotNull
     private Boolean checked;
+    @NotNull
     private Boolean archived;
-    private Boolean delete;
+    @NotNull
+    private Boolean deleted;
 
     public Integer getId() {
         return id;
@@ -72,12 +89,12 @@ public class Item {
         this.archived = archived;
     }
 
-    public Boolean getDelete() {
-        return delete;
+    public Boolean getDeleted() {
+        return deleted;
     }
 
-    public void setDelete(Boolean delete) {
-        this.delete = delete;
+    public void setDeleted(Boolean delete) {
+        this.deleted = delete;
     }
 
     

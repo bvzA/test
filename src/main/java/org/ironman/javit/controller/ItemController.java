@@ -60,5 +60,9 @@ public class ItemController {
         logger.info("RemoveItem");
         return itemService.removeItem(id);
     }
-
+    @GetMapping("/checked/{id}")
+    public ItemResponse checkItem (@PathVariable("id") Integer id){
+        logger.info("GetItem");
+        return itemService.checkedItem(id);
+    }
 }
