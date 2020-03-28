@@ -1,0 +1,8 @@
+FROM openjdk:11-slim
+RUN mkdir /project
+RUN mkdir /app
+ADD . /project
+RUN cd /project && ./gradlew clean bootJar
+RUN mv /project/build/libs/*.jar  /app/javit.jar
+WORKDIR /app
+CMD ["java", "-jar", "javit.jar"]

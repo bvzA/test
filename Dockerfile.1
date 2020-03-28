@@ -1,0 +1,5 @@
+FROM openjdk:11-slim
+RUN mkdir /app
+ADD build/libs/*.jar  /app/javit.jar
+WORKDIR /app
+CMD ["java", "-jar", "javit.jar"]

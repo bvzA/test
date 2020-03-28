@@ -1,19 +1,6 @@
 test project
 ==================
 
-```
-fdfdfdfkjjj
-fdfdf
-```
+ [HOSTNAME]/[PROJECT-ID]/[IMAGE]
 
-
-# title 1
-
-## Tete
-
-```
-$ ls
-$ . .. ./
-
-kkkkkkk
-```
+ asia.gcr.io/pana5566/shopping-app
